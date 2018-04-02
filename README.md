@@ -1,0 +1,2 @@
+# YHTimer
+根据Timer的interval和RunloopMode作为key生成Timer,避免在主线程创建过多Timer增加RunLoop负担
