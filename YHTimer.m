@@ -121,12 +121,18 @@
 @implementation YHTimer
 
 +(YHTimer *)startTimer:(NSTimeInterval)interval runloopMode:(YHTimerRunLoopMode)mode timeOutFireAction:(YHTimeOutFireAction)action{
+    if (![NSThread isMainThread]) {
+        return nil;
+    }
     YHTimer *timer = [[YHTimer alloc]init];
     timer.timerId = [[YHTimerManager shareManager] startTimer:interval runloopMode:mode timeOutFireAction:action];
     return timer;
 }
 
--(void)stop{
+-(void)invalidate{
+    if (![NSThread isMainThread]) {
+        return ;
+    }
     [[YHTimerManager shareManager] stopTimer:self.timerId];
 }
 
