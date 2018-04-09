@@ -20,7 +20,7 @@ typedef void(^YHTimeOutFireAction)(void);
 
 +(YHTimer *)startTimer:(NSTimeInterval)interval runloopMode:(YHTimerRunLoopMode)mode timeOutFireAction:(YHTimeOutFireAction)action;
 
--(void)stop;
+-(void)invalidate;
 
 @end
 
